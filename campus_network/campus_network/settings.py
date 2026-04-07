@@ -80,7 +80,9 @@ WSGI_APPLICATION = 'campus_network.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL')
+    # Use DATABASE_URL when provided (e.g., Postgres in deployment),
+    # otherwise fall back to a local SQLite database for development.
+    'default': env.db('DATABASE_URL', default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
 }
 
 
