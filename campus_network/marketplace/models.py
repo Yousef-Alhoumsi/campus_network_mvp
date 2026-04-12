@@ -18,8 +18,9 @@ class Profile(models.Model):
 class Opportunity(models.Model):
     title = models.CharField(max_length=200)
     organization = models.CharField(max_length=200)
+    organizer_email - models.EmailField()
     location = models.CharField(max_length=200, help_text="e.g., Red Hook, Kingston, On-Campus")
-    description = models.TextField()
+    description = models.TextField(default="contact@example.com")
     is_paid = models.BooleanField(default=False)
 
     #The ai field
